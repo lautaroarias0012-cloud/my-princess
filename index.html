@@ -306,8 +306,8 @@
       <h1>Para mi vida entera💐</h1>
 
       <p class="subtitle">
-        Preparé algo especial para ti mi amor, son cositas bonitas y mucho amor. 
-Espero te guste todo my love. 💕
+        Preparé algo especial para ti mi amor, son cositas bonitas y mucho amor.
+        Espero te guste todo my love. 💕
       </p>
 
       <button class="btn" id="startBtn" type="button">
@@ -391,7 +391,7 @@ Espero te guste todo my love. 💕
     <section class="card hidden" id="letterSection">
       <div class="bear" aria-hidden="true">❤️🐰❤️</div>
 
-      <h2>Una cartita para ti my love</h2>
+      <h2>Una cartita para ti my love❤️</h2>
 
       <div class="final-letter" id="letterText"></div>
 
@@ -400,6 +400,43 @@ Espero te guste todo my love. 💕
       <button class="btn" id="hugBtn" type="button">
         Mandarte un abrazo virtual 🤗
       </button>
+
+      <!--
+      💗 ABRAZO VIRTUAL: MENSAJE PERSONALIZABLE
+
+      Este mensaje aparece dentro de tu página cuando ella
+      pulsa "Mandarte un abrazo virtual".
+
+      Para cambiarlo en el futuro:
+      - Editá el título dentro de <h2>.
+      - Cambiá los textos de los párrafos <p>.
+      - Podés cambiar los emojis por los que más te gusten.
+
+      IMPORTANTE:
+      La clase "hidden" hace que el mensaje comience oculto.
+      JavaScript la quita cuando ella pulsa el botón.
+      -->
+      <div id="hugMessage" class="gift-message hidden" role="status">
+        <div style="font-size: 2.5rem;">🧸🤗💗</div>
+
+        <h2>Ven aquí mi princesita😭❤️</h2>
+
+        <p>
+          Te mando el abrazo más grande con todo mi amor y cariño del mundo🥺❤️
+        </p>
+
+        <p>
+          Aunque ahora no pueda abrazarte físicamente
+          quiero que sientas todo mi amor y cariño
+          y mis ganas de estar siempre juntitos🐰🐱❤️
+        </p>
+
+        <p>
+          <strong>Te amo muchísimo mi vida entera😭❤️</strong>
+        </p>
+
+        <div style="font-size: 2rem;">💖🌸💖</div>
+      </div>
 
       <button class="btn secondary" id="replayBtn" type="button">
         Volver a empezar ↻
@@ -695,22 +732,40 @@ Espero te guste todo my love. 💕
     document.getElementById("showLetterBtn").addEventListener("click", () => {
       letterText.textContent = finalLetter;
 
+      // Oculta el mensaje del abrazo cada vez que se abre la carta.
+      document.getElementById("hugMessage").classList.add("hidden");
+
       showOnly(letterSection);
 
       sprinkle(12);
     });
 
 
-    // ABRAZO VIRTUAL
+    // 🧸💗 ABRAZO VIRTUAL PERSONALIZADO
+    // Antes se usaba alert(), que abre una ventana del navegador.
+    // Ahora mostramos el mensaje directamente dentro de la página.
     document.getElementById("hugBtn").addEventListener("click", () => {
-      sprinkle(24);
+      const hugMessage = document.getElementById("hugMessage");
 
-      alert("¡Un abrazo gigante para mi princesa! 🤗💗");
+      // Muestra el mensaje romántico dentro de la cartita.
+      hugMessage.classList.remove("hidden");
+
+      // Lanza corazones y flores animados.
+      sprinkle(35);
+
+      // Desplaza suavemente la pantalla hasta el mensaje.
+      hugMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
     });
 
 
     // VOLVER A EMPEZAR
     document.getElementById("replayBtn").addEventListener("click", () => {
+      // Oculta el abrazo si vuelve a empezar la aventura.
+      document.getElementById("hugMessage").classList.add("hidden");
+
       showOnly(cover);
       sprinkle(8);
     });
